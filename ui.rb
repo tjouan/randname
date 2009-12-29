@@ -26,6 +26,12 @@ class RNGuiWindow < FXMainWindow
     results = FXVerticalFrame.new self,
       LAYOUT_SIDE_RIGHT | LAYOUT_FILL_X | LAYOUT_FILL_Y
 
+    FXCheckButton.new controls, 'alternate consonants and vowels', nil, 0,
+          ICON_BEFORE_TEXT|LAYOUT_SIDE_TOP
+
+    FXHorizontalSeparator.new controls,
+      LAYOUT_SIDE_BOTTOM | LAYOUT_FILL_X | SEPARATOR_GROOVE
+
     button_gen = FXButton.new controls, 'Generate!'
     button_gen.connect SEL_COMMAND do |sender, selector, data|
       @results_text.text = $r.name 8, true
