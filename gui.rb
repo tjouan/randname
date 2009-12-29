@@ -38,8 +38,11 @@ class RNGuiWindow < FXMainWindow
     @n.incrementByAmount 32
     FXLabel.new matrix, 'number of words'
 
-    @start = FXTextField.new matrix, 6, nil, 0, LAYOUT_FILL_X
+    @start = FXTextField.new matrix, 8, nil, 0, LAYOUT_FILL_X
     FXLabel.new matrix, 'start string'
+
+    @forbid = FXTextField.new matrix, 8, nil, 0, LAYOUT_FILL_X
+    FXLabel.new matrix, 'forbidden chars'
 
     @altern = FXCheckButton.new left, 'alternate consonants and vowels', nil, 0,
      ICON_BEFORE_TEXT|LAYOUT_SIDE_TOP
@@ -53,9 +56,9 @@ class RNGuiWindow < FXMainWindow
       res = ''
       @n.value.times do
         if @altern.checked?
-          res += $r.name @len.value, true, @start.text
+          res += $r.name @len.value, true, @start.text, @forbid.text
         else
-          res += $r.name @len.value, false, @start.text
+          res += $r.name @len.value, false, @start.text, @forbid.text
         end
         res += "\n"
       end
