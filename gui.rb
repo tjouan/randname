@@ -18,7 +18,6 @@ class RNGuiWindow < FXMainWindow
     super app,
       "Randname: a random word generator, GUI version",
       :opts => DECOR_ALL
-    FXToolTip.new self.getApp
 
     # vertical split of the main window
     left = FXVerticalFrame.new self,
@@ -64,7 +63,6 @@ class RNGuiWindow < FXMainWindow
       end
       @results.text = res
     end
-    button_gen.tipText = 'Generate words based on your settings'
 
     # results area
     @results = FXText.new right, nil, 0,
