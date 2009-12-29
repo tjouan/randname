@@ -29,14 +29,17 @@ class RNGuiWindow < FXMainWindow
     # Randname settings controls
     matrix = FXMatrix.new left, 2, MATRIX_BY_COLUMNS | LAYOUT_FILL_X
 
-    @len = FXSpinner.new matrix, 2, nil
+    @len = FXSpinner.new matrix, 2, nil, 0, LAYOUT_FILL_X
     @len.incrementByAmount 8
     FXLabel.new matrix, 'word length'
 
-    @n = FXSpinner.new matrix, 2, nil
+    @n = FXSpinner.new matrix, 2, nil, 0, LAYOUT_FILL_X
     @n.setIncrement 8
     @n.incrementByAmount 32
     FXLabel.new matrix, 'number of words'
+
+    @start = FXTextField.new matrix, 6, nil, 0, LAYOUT_FILL_X
+    FXLabel.new matrix, 'start string'
 
     @altern = FXCheckButton.new left, 'alternate consonants and vowels', nil, 0,
      ICON_BEFORE_TEXT|LAYOUT_SIDE_TOP
@@ -50,9 +53,9 @@ class RNGuiWindow < FXMainWindow
       res = ''
       @n.value.times do
         if @altern.checked?
-          res += $r.name @len.value, true
+          res += $r.name @len.value, true, @start.text
         else
-          res += $r.name @len.value, false
+          res += $r.name @len.value, false, @start.text
         end
         res += "\n"
       end
