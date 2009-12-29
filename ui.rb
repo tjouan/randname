@@ -16,12 +16,15 @@ include Fox
 app = FXApp.new
 
 win = FXMainWindow.new app, 'Randname: a random word generator'
+
 button_gen = FXButton.new win, 'Generate!'
 button_gen.connect SEL_COMMAND do |sender, selector, data|
   puts r.name 8, true
 end
+button_gen.tipText = 'Generate words based on your settings'
+
+FXToolTip.new app
 app.create
 
 win.show
-
 app.run
