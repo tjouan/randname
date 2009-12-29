@@ -44,6 +44,7 @@ class RNGuiWindow < FXMainWindow
     FXHorizontalSeparator.new left,
       LAYOUT_SIDE_BOTTOM | LAYOUT_FILL_X | SEPARATOR_GROOVE
 
+    # button to start words generation and output in results area
     button_gen = FXButton.new left, 'Generate!'
     button_gen.connect SEL_COMMAND do |sender, selector, data|
       res = ''
@@ -59,7 +60,7 @@ class RNGuiWindow < FXMainWindow
     end
     button_gen.tipText = 'Generate words based on your settings'
 
-    # results ext area
+    # results area
     @results = FXText.new right, nil, 0,
       TEXT_READONLY | LAYOUT_FILL_X | LAYOUT_FILL_Y
   end
