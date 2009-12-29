@@ -27,8 +27,8 @@ class Randname
     (Kernel.rand(26) + 97).chr
   end
 
-  def name(len, altern = false)
-    s = ''
+  def name(len, altern = false, start = nil)
+    s = start ? start : ''
     while s.length < len do
       n = letter
       if altern and s.length >= 1
