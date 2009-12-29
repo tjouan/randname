@@ -26,15 +26,19 @@ class RNGuiWindow < FXMainWindow
     right = FXVerticalFrame.new self,
       LAYOUT_SIDE_RIGHT | LAYOUT_FILL_X | LAYOUT_FILL_Y
 
-    FXCheckButton.new left, 'alternate consonants and vowels', nil, 0,
-          ICON_BEFORE_TEXT|LAYOUT_SIDE_TOP
+    @altern = FXCheckButton.new left, 'alternate consonants and vowels', nil, 0,
+     ICON_BEFORE_TEXT|LAYOUT_SIDE_TOP
 
     FXHorizontalSeparator.new left,
       LAYOUT_SIDE_BOTTOM | LAYOUT_FILL_X | SEPARATOR_GROOVE
 
     button_gen = FXButton.new left, 'Generate!'
     button_gen.connect SEL_COMMAND do |sender, selector, data|
-      @results.text = $r.name 8, true
+      if @altern.checked?
+        @results.text = $r.name 8, true
+      else
+        @results.text = $r.name 8, false
+      end
     end
     button_gen.tipText = 'Generate words based on your settings'
 
