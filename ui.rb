@@ -21,22 +21,30 @@ class RNGuiWindow < FXMainWindow
 
     FXToolTip.new self.getApp
 
-    button_gen = FXButton.new self, 'Generate!'
+    controls = FXVerticalFrame.new self,
+      LAYOUT_SIDE_LEFT | LAYOUT_FILL_Y | PACK_UNIFORM_WIDTH
+    results = FXVerticalFrame.new self,
+      LAYOUT_SIDE_RIGHT | LAYOUT_FILL_X | LAYOUT_FILL_Y
+
+    button_gen = FXButton.new controls, 'Generate!'
     button_gen.connect SEL_COMMAND do |sender, selector, data|
-      puts $r.name 8, true
+      @results_text.text = $r.name 8, true
     end
     button_gen.tipText = 'Generate words based on your settings'
+
+    @results_text = FXText.new results, nil, 0,
+      TEXT_READONLY | LAYOUT_FILL_X | LAYOUT_FILL_Y
   end
 
   def create
     super
-    show(PLACEMENT_SCREEN)
+    show PLACEMENT_SCREEN
   end
 end
 
 if __FILE__ == $0
-  app = FXApp.new('RNGui', 'A13')
-  RNGuiWindow.new(app)
+  app = FXApp.new 'RNGui', 'A13'
+  RNGuiWindow.new app
   app.create
   app.run
 end
