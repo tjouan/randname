@@ -21,24 +21,24 @@ class RNGuiWindow < FXMainWindow
 
     FXToolTip.new self.getApp
 
-    controls = FXVerticalFrame.new self,
+    left = FXVerticalFrame.new self,
       LAYOUT_SIDE_LEFT | LAYOUT_FILL_Y | PACK_UNIFORM_WIDTH
-    results = FXVerticalFrame.new self,
+    right = FXVerticalFrame.new self,
       LAYOUT_SIDE_RIGHT | LAYOUT_FILL_X | LAYOUT_FILL_Y
 
-    FXCheckButton.new controls, 'alternate consonants and vowels', nil, 0,
+    FXCheckButton.new left, 'alternate consonants and vowels', nil, 0,
           ICON_BEFORE_TEXT|LAYOUT_SIDE_TOP
 
-    FXHorizontalSeparator.new controls,
+    FXHorizontalSeparator.new left,
       LAYOUT_SIDE_BOTTOM | LAYOUT_FILL_X | SEPARATOR_GROOVE
 
-    button_gen = FXButton.new controls, 'Generate!'
+    button_gen = FXButton.new left, 'Generate!'
     button_gen.connect SEL_COMMAND do |sender, selector, data|
-      @results_text.text = $r.name 8, true
+      @results.text = $r.name 8, true
     end
     button_gen.tipText = 'Generate words based on your settings'
 
-    @results_text = FXText.new results, nil, 0,
+    @results = FXText.new right, nil, 0,
       TEXT_READONLY | LAYOUT_FILL_X | LAYOUT_FILL_Y
   end
 
