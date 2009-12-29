@@ -30,10 +30,11 @@ class RNGuiWindow < FXMainWindow
     matrix = FXMatrix.new left, 2, MATRIX_BY_COLUMNS | LAYOUT_FILL_X
 
     @len = FXSpinner.new matrix, 2, nil
-    @len.incrementByAmount 6
+    @len.incrementByAmount 8
     FXLabel.new matrix, 'word length'
 
     @n = FXSpinner.new matrix, 2, nil
+    @n.setIncrement 8
     @n.incrementByAmount 32
     FXLabel.new matrix, 'number of words'
 
@@ -45,11 +46,16 @@ class RNGuiWindow < FXMainWindow
 
     button_gen = FXButton.new left, 'Generate!'
     button_gen.connect SEL_COMMAND do |sender, selector, data|
-      if @altern.checked?
-        @results.text = $r.name @len.value, true
-      else
-        @results.text = $r.name @len.value, false
+      res = ''
+      @n.value.times do
+        if @altern.checked?
+          res += $r.name @len.value, true
+        else
+          res += $r.name @len.value, false
+        end
+        res += "\n"
       end
+      @results.text = res
     end
     button_gen.tipText = 'Generate words based on your settings'
 
