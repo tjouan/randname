@@ -8,11 +8,11 @@ class Randname
   end
 
   def first s
-    (s.split //).shift
+    (s.split(//)).shift
   end
 
   def last s
-    (s.split //).pop
+    (s.split(//)).pop
   end
 
   def is_consonant? c
