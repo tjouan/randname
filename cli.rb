@@ -8,4 +8,4 @@ $LOAD_PATH.unshift libdir unless $LOAD_PATH.include? libdir
 require 'randname'
 r = Randname.new
 
-puts r.name 8, true, 'ta'
+puts r.name 8, true, nil, 'abcdefghijklmnopqrst'

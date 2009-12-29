@@ -27,10 +27,11 @@ class Randname
     (Kernel.rand(26) + 97).chr
   end
 
-  def name(len, altern = false, start = nil)
+  def name(len, altern = false, start = nil, forbid = nil)
     s = start ? start : ''
     while s.length < len do
       n = letter
+      redo if forbid.include? n
       if altern and s.length >= 1
         redo if is_consonant?(last(s))  and is_consonant? n
         redo if is_vowel?(last(s))      and is_vowel? n
