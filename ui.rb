@@ -46,9 +46,9 @@ class RNGuiWindow < FXMainWindow
     button_gen = FXButton.new left, 'Generate!'
     button_gen.connect SEL_COMMAND do |sender, selector, data|
       if @altern.checked?
-        @results.text = $r.name 8, true
+        @results.text = $r.name @len.value, true
       else
-        @results.text = $r.name 8, false
+        @results.text = $r.name @len.value, false
       end
     end
     button_gen.tipText = 'Generate words based on your settings'
