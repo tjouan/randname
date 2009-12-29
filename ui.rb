@@ -18,13 +18,24 @@ class RNGuiWindow < FXMainWindow
     super app,
       "Randname: a random word generator, GUI version",
       :opts => DECOR_ALL
-
     FXToolTip.new self.getApp
 
+    # vertical split of the main window
     left = FXVerticalFrame.new self,
       LAYOUT_SIDE_LEFT | LAYOUT_FILL_Y | PACK_UNIFORM_WIDTH
     right = FXVerticalFrame.new self,
       LAYOUT_SIDE_RIGHT | LAYOUT_FILL_X | LAYOUT_FILL_Y
+
+    # Randname settings controls
+    matrix = FXMatrix.new left, 2, MATRIX_BY_COLUMNS | LAYOUT_FILL_X
+
+    @len = FXSpinner.new matrix, 2, nil
+    @len.incrementByAmount 6
+    FXLabel.new matrix, 'word length'
+
+    @n = FXSpinner.new matrix, 2, nil
+    @n.incrementByAmount 32
+    FXLabel.new matrix, 'number of words'
 
     @altern = FXCheckButton.new left, 'alternate consonants and vowels', nil, 0,
      ICON_BEFORE_TEXT|LAYOUT_SIDE_TOP
@@ -42,6 +53,7 @@ class RNGuiWindow < FXMainWindow
     end
     button_gen.tipText = 'Generate words based on your settings'
 
+    # results ext area
     @results = FXText.new right, nil, 0,
       TEXT_READONLY | LAYOUT_FILL_X | LAYOUT_FILL_Y
   end
