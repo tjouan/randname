@@ -33,5 +33,4 @@ r = Randname.new
 
 opt[:count].to_i.times do
   puts r.name opt[:length], opt[:alternate], opt[:start], opt[:forbid]
-  #puts r.name opt[:length], opt[:alternate], opt[:start], opt[:forbid]
 end
