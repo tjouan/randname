@@ -2,9 +2,6 @@
 
 require 'optparse'
 
-libdir = File.join(File.expand_path(File.dirname(__FILE__)), './lib')
-$LOAD_PATH.unshift libdir unless $LOAD_PATH.include? libdir
-
 opt = {
   :count      =>  32,
   :length     =>  8,
