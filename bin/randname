@@ -23,7 +23,7 @@ OptionParser.new do |o|
   o.on '-s', '--start STRING', 'prepend a string to generated words' do |s|
     opt[:start] = s
   end
-  o.on '-f', '--forbid STRING', 'string of chars to be excluded in generated words' do |f|
+  o.on '-f', '--forbid STRING', 'string of chars to exclude from words' do |f|
     opt[:forbid] = f
   end
 end.parse!
