@@ -1,6 +1,3 @@
-# Randname: a random word generator
-# Thibault Jouan <tj@a13.fr>
-
 class Randname
   def initialize
     @c = 'bcdfghjklmnpqrstvwxz'

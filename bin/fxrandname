@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
-# Randname: a random word generator
-# Thibault Jouan <tj@a13.fr>
 
 require 'rubygems'
 require 'fox16'
